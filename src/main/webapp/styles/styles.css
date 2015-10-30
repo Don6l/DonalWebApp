@@ -1,11 +1,11 @@
 @CHARSET "UTF-8";
-/*
+
 .logOut {
 	padding : 2em;
 	text-align:right;
 	border-bottom : solid;
 	border-bottom-color: #F0F0F0;
-}*/
+}
 
 .logIn {
 	padding: 2em;
@@ -17,4 +17,27 @@
 .logIn input[type=text], button{
 	background : #F8F8F8;
 	margin : 0.7em;
+}
+
+
+body {
+	background: #F8F8F8;
+}
+
+.container{
+	background : #FFFFFF;
+}
+
+.tab-pane {
+	margin :2em;
+	text-align: center;
+	
+}
+
+.order{
+	display: center;
+	border: 1px solid #ccc;
+  	border-top: 0;
+  	padding: 20px;
+  
 }

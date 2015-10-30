@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Movies</title>
+<title>World Wide Web Data</title>
 <link rel="stylesheet" href="styles/bootstrap.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="styles/bootstrap-theme.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
@@ -13,45 +13,57 @@
 
 	<div class="container" id="head">
 			<header>
-				
+				<h2>World Wide Web Data</h2>
 				<div class=logIn>
-					<h2>Movies</h2>
 					<input type="text" name="UserId" id="UserId" placeholder="User Id"><br />
 					<input type="password" name="Password" id="Password"
 						placeholder="Password"><br />
-					<button type="button" id="logIn" class="btn btn-primary">Login</button>
-						<div class=logOut>
-							<button type="button" id="logOut" class="btn btn-primary">Logout</button>
-						</div>
+					<button type="button" id="logIn" class="btn btn-primary">Login</button>		
+				</div>
+				<div class=logOut>
+					<button type="button" id="logOut" class="btn btn-primary">Logout</button>
 				</div>
 				
 			</header>
 	</div>
-	<ul class="nav nav-tabs" role="tablist" id="nav"></ul>
 	
-	<!-- Tab panes -->
-	<div class = "tab-content">
+	<div class= "container">
+		<ul class="nav nav-tabs" role="tablist" id="nav">
+			<li class ="active" id = "admin"><a href="#adminTab" role="tab" data-toggle="tab">Admin</a></li>
+		</ul>
+	
+		<!-- Tab panes -->
+		<div class = "tab-content">
+		
+		
+			<!--   					Admin Tab 							-->
+			<div class = "tab-pane active" id = "adminTab">
+				<div id = "form" class = "order">
+				<input type="file" name="file" id="file" class="form-control" />
+				<button type="button" id="submitButton" data-loading-text="Loading..." class="btn btn-primary">Upload File</button>
+				</div>
+			</div>
 	
 	
-		<!--   					Admin Tab 							-->
-		<div class = "tab-pane" id = "adminTab">
+			<!--   					Europe Tab 							-->
+			<div class = "tab-pane" id = "europeTab">
 			
+			</div>
 		
+		
+			<!--   					N. America Tab 							-->		
+			<div class = "tab-pane" id = "nAmericaTab">
+			
+			
+			</div>
+		
+			<!--   					S. America Tab 							-->		
+			<div class = "tab-pane" id = "sAmericaTab">
+			
+			
+			</div>
+			
 		</div>
-
-
-		<!--   					Customer Tab 							-->
-		<div class = "tab-pane" id = "customerTab">
-		
-		</div>
-	
-	
-		<!--   					Manager Tab 							-->		
-		<div class = "tab-pane" id = "managerTab">
-		
-		
-		</div>
-	
 	</div>
 </body>
 </html>
