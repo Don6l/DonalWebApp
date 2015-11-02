@@ -1,4 +1,4 @@
-package com.donalwebapp.admin;
+package com.donalwebapp.service;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -10,6 +10,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.poi.ss.usermodel.Workbook;
+
+import com.donalwebapp.admin.FileUpload;
 
 @Path("/upload")
 @Stateless

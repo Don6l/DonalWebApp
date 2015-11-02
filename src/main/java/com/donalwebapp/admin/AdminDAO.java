@@ -1,5 +1,9 @@
 package com.donalwebapp.admin;
 
-public class AdminDAO {
+import javax.ejb.Remote;
 
+
+@Remote
+public interface AdminDAO {
+	<T> void addRowToDatabase(T entity);
 }
