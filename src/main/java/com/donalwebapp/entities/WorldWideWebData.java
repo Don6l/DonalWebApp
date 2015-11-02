@@ -38,6 +38,12 @@ public class WorldWideWebData implements Serializable{
 	private Double client_longitude;
 	private int miles_between;
 	
+	
+	/**
+	 * ================
+	 * Getters & Setters Begin
+	 * ================
+	 */
 	public int getTest_id() {
 		return test_id;
 	}
@@ -182,7 +188,11 @@ public class WorldWideWebData implements Serializable{
 	public void setMiles_between(int miles_between) {
 		this.miles_between = miles_between;
 	}
-	
+	/**
+	 * ================
+	 * Getters & Setters Ends
+	 * ================
+	 */
 	
 	
 }
