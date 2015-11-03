@@ -40,8 +40,8 @@ CREATE TABLE `wwwdata` (
 	`client_region_name` varchar(45) DEFAULT NULL,
 	`client_region_code` varchar(5) DEFAULT NULL,
 	`client_city` varchar(45) DEFAULT NULL,
-	`client_latitude` int(11) NOT NULL,
-	`client_longitude` int(11) NOT NULL,
+	`client_latitude` Decimal(10,5) NOT NULL,
+	`client_longitude` Decimal(10,5) NOT NULL,
 	`miles_between` int (11) NOT NULL,
 	PRIMARY KEY (`test_id`)
 );
