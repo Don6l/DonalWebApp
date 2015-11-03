@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.donalwebapp.admin.AdminDAO;
 import com.donalwebapp.entities.Users;
 
 
@@ -19,14 +20,14 @@ import com.donalwebapp.entities.Users;
 public class UsersWS {
 
 	@EJB(beanName="online")
-	private Users usersDAO;
+	private AdminDAO adminDAO;
 	
 	public UsersWS(){
 		
 	}
 	
-	public UsersWS(final Users usersDAO){
-		this.usersDAO = usersDAO;
+	public UsersWS(final AdminDAO adminDAO){
+		this.adminDAO = adminDAO;
 	}
 	
 	@GET

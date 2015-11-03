@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -12,8 +15,9 @@ import javax.persistence.TemporalType;
 @Table(name = "wwwdata")
 public class WorldWideWebData implements Serializable{
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int test_id;	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date test_date;	
 	private int client_ip_id;
 	private int download_kbps;
