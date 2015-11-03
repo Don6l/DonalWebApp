@@ -1,0 +1,56 @@
+DROP DATABASE IF EXISTS `WebData`;
+CREATE DATABASE `WebData`;
+USE `WebData`;
+
+-- Table structure for table `user`
+--
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `surname` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
+
+--
+-- Table structure for information
+DROP TABLE IF EXISTS `wwwdata`;
+CREATE TABLE `wwwdata` (
+	`test_id` int(11) NOT NULL,
+	`test_date` DATETIME,
+	`client_ip_id` int(11) NOT NULL,
+	`download_kbps` int (11) NOT NULL,
+	`upload_kbps` int (11) NOT NULL,
+	`latency` int (5) NOT NULL,
+	`server_name` varchar(45) DEFAULT NULL,
+	`server_country` varchar(45) DEFAULT NULL,
+	`server_country_code` varchar(5) DEFAULT NULL,
+	`server_latitude` DECIMAL(10,5),
+	`server_longitude`DECIMAL (10,5),
+	`server_sponsor_name`varchar(45) DEFAULT NULL,
+	`user_agent` varchar(45) DEFAULT NULL,
+	`isp_name` varchar(45) DEFAULT NULL,
+	`client_net_speed`int (2) NOT NULL,
+	`is_isp` int (2) NOT NULL,
+	`client_country` varchar(45) DEFAULT NULL,
+	`client_country_code` varchar(5) DEFAULT NULL,
+	`client_region_name` varchar(45) DEFAULT NULL,
+	`client_region_code` varchar(5) DEFAULT NULL,
+	`client_city` varchar(45) DEFAULT NULL,
+	`client_latitude` int(11) NOT NULL,
+	`client_longitude` int(11) NOT NULL,
+	`miles_between` int (11) NOT NULL,
+	PRIMARY KEY (`test_id`)
+);
+
+--
+-- Dumping data for table `user`
+--
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` VALUES 
+(1,'Sam','Power','sampower12358@gmail.com','abc'),
+(2,'Donal','McClean','donalmcclean@gmail.com','abc');
+UNLOCK TABLES;
