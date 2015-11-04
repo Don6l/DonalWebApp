@@ -16,7 +16,7 @@ var hideEverything = function(){
 	$('header .logOutArea').hide();
 	$('#nav').empty();
 	$('#nav').hide();
-	$('#tabs').hide();
+	
 };
 
 var logOut = function(){
@@ -26,9 +26,6 @@ var logOut = function(){
 	
 	$('#adminTab').attr('class','tab-pane');
 	$('#europeTab').attr('class','tab-pane');
-	$('#nAmericaTab').attr('class','tab-pane');
-	$('#sAmericaTab').attr('class','tab-pane');
-	$('#asiaTab').attr('class','tab-pane');
 	
 	
 }
@@ -72,26 +69,23 @@ var renderBody = function(data){
 			$('header .logInArea').hide();
 			$('header .logOutArea').show();
 			$('body #nav').show();
-			$('#tabs').show();
+		
 			
-			$('#nav').append('<li class ="active" id = "admin"><a href="#adminTab" role="tab" data-toggle="tab">Admin</a></li>');
-			$('#nav').append('<li id = "europeTab"><a href="#europeTab" role="tab" data-toggle="tab">Europe Tab</a></li>');
-			$('#nav').append('<li id = "nAmericaTab"><a href="#nAmericaTab" role="tab" data-toggle="tab">North America Tab</a></li>');
-			$('#nav').append('<li id = "sAmericaTab"><a href="#sAmericaTab" role="tab" data-toggle="tab">South America Tab</a></li>');
-			$('#nav').append('<li id = "asiaTab"><a href="#asiaTab" role="tab" data-toggle="tab">Asia Tab</a></li>');
-			$('#adminTab').attr('class','tab-pane active');
+			$('#nav').append('<li class ="active" id = "adminTab"><a href="#admin" role="tab" data-toggle="tab">Admin</a></li>');
+			$('#nav').append('<li id = "europeTab"><a href="#europe" role="tab" data-toggle="tab">Europe</a></li>');
+			$('#nav').append('<li id = "europeTab"><a href="#nAmerica" role="tab" data-toggle="tab">North America</a></li>');
+			$('#nav').append('<li id = "europeTab"><a href="#sAmerica" role="tab" data-toggle="tab">South America</a></li>');
+			$('#nav').append('<li id = "europeTab"><a href="#asia" role="tab" data-toggle="tab">Asia</a></li>');
+			$('#admin').attr('class','tab-pane active');
 		}
 		else if(data[0]== "user"){
 			console.log('Welcome user');
 			$('header .logInArea').hide();
 			$('header .logOutArea').show();
 			$('body #nav').show();
-			$('#tabs').show();
+			
 			
 			$('#nav').append('<li class = "active" id = "europeTab"><a href="#europeTab" role="tab" data-toggle="tab">Europe Tab</a></li>');
-			$('#nav').append('<li id = "nAmericaTab"><a href="#nAmericaTab" role="tab" data-toggle="tab">North America Tab</a></li>');
-			$('#nav').append('<li id = "sAmericaTab"><a href="#sAmericaTab" role="tab" data-toggle="tab">South America Tab</a></li>');
-			$('#nav').append('<li id = "asiaTab"><a href="#asiaTab" role="tab" data-toggle="tab">Asia Tab</a></li>');
 			$('#europeTab').attr('class','tab-pane active');
 		}
 		else if(data[0]== "invalid"){

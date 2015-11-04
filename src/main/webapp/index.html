@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="styles/bootstrap-theme.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
 <script src="js/jquery-2.1.4.js" type="text/javascript"></script>
-<script type="text/javascript" src="assets/twitterbootstrap/js/bootstrap-tab.js"></script>
-<script src="js/main.js"></script>
-<script src="js/bootstrap.js"></script>
 
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
 </head>
 <body>
 
@@ -30,7 +29,7 @@
 			</header>
 	</div>
 	
-	<div class= "container" id= "tabs">
+	<div class= "container">
 		<ul class="nav nav-tabs" role="tablist" id="nav"></ul>
 		
 		<!-- Tab panes -->
@@ -38,7 +37,7 @@
 		
 		
 			<!--   					Admin Tab 							-->
-			<div class = "tab-pane" id = "adminTab">
+			<div class = "tab-pane" id = "admin">
 				<div id = "form" class = "order">
 				<input type="file" name="file" id="file" class="form-control" />
 				<button type="button" id="submitButton" data-loading-text="Loading..." class="btn btn-primary">Upload File</button>
@@ -47,31 +46,32 @@
 	
 	
 			<!--   					Europe Tab 							-->
-			<div class = "tab-pane" id = "europeTab">
-				<div id = euContent>
+			<div class = "tab-pane" id = "europe">
+				
 					<p>Europe Tab goes here</p>
-				</div>
-			</div>
-		
-		
-			<!--   					N. America Tab 							-->		
-			<div class = "tab-pane" id = "nAmericaTab">
-				<p>North American Tab goes here</p>
-			
-			</div>
-		
-			<!--   					S. America Tab 							-->		
-			<div class = "tab-pane" id = "sAmericaTab">
-				<p>South American Tab goes here</p>
 			
 			</div>
 			
-			<!--   					Asia Tab 							-->		
-			<div class = "tab-pane" id = "asiaTab">
-				<p>Asia Tab goes here</p>
+			<!--   					North America 							-->
+			<div class = "tab-pane" id = "nAmerica">
+				
+					<p>North America Tab goes here</p>
 			
 			</div>
 			
+			<!--   					South America 							-->
+			<div class = "tab-pane" id = "sAmerica">
+				
+					<p>South America Tab goes here</p>
+			
+			</div>
+			
+			<!--   					Asia							-->
+			<div class = "tab-pane" id = "asia">
+				
+					<p>Asia Tab goes here</p>
+			
+			</div>
 		
 		</div>
 	</div>
