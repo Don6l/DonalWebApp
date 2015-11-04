@@ -1,20 +1,20 @@
 @CHARSET "UTF-8";
 
-.logOut {
+.logOutArea {
 	padding : 2em;
 	text-align:right;
 	border-bottom : solid;
 	border-bottom-color: #F0F0F0;
 }
 
-.logIn {
+.logInArea {
 	padding: 2em;
 	text-align:center;
 	border-bottom : solid;
 	border-bottom-color: #F0F0F0;
 }
 
-.logIn input[type=text], button{
+.logInArea input[type=text], button{
 	background : #F8F8F8;
 	margin : 0.7em;
 }

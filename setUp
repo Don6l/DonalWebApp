@@ -6,12 +6,10 @@ USE `WebData`;
 --
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `surname` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `id` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+`userType` varchar(45) DEFAULT NULL,
+PRIMARY KEY(`id`)
 ) ;
 
 
@@ -51,6 +49,6 @@ CREATE TABLE `wwwdata` (
 --
 LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES 
-(1,'Sam','Power','sampower12358@gmail.com','abc'),
-(2,'Donal','McClean','donalmcclean@gmail.com','abc');
+('Sam','abc','user'),
+('Donal','123','admin');
 UNLOCK TABLES;

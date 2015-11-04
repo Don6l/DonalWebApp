@@ -1,5 +1,7 @@
 package com.donalwebapp.service;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -35,7 +37,13 @@ public class UsersWS {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response authenticateUser(@PathParam("id") final String userId, @PathParam("pw") final String password){
 		String[] userType = {"invalid"};
-//		final List<Users> users = usersDAO.get
+		final List<Users> users = adminDAO.getAllUsers();
+		for(final Users user : users){
+			if(user.getId().equalsIgnoreCase(userId) && user.getPassword().equals(password)){
+				userType[0] = user.getUserType();
+				break;
+			}
+		}
 		
 		return Response.status(200).entity(userType).build();
 	}
