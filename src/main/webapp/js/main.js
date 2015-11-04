@@ -16,12 +16,21 @@ var hideEverything = function(){
 	$('header .logOutArea').hide();
 	$('#nav').empty();
 	$('#nav').hide();
+	$('#tabs').hide();
 };
 
 var logOut = function(){
 	console.log('logOut');
+	$('header .logInArea').show();
 	hideEverything();
-	('.logInArea').show();
+	
+	$('#adminTab').attr('class','tab-pane');
+	$('#europeTab').attr('class','tab-pane');
+	$('#nAmericaTab').attr('class','tab-pane');
+	$('#sAmericaTab').attr('class','tab-pane');
+	$('#asiaTab').attr('class','tab-pane');
+	
+	
 }
 
 var authenticateLogin = function(){
@@ -63,7 +72,7 @@ var renderBody = function(data){
 			$('header .logInArea').hide();
 			$('header .logOutArea').show();
 			$('body #nav').show();
-			
+			$('#tabs').show();
 			
 			$('#nav').append('<li class ="active" id = "admin"><a href="#adminTab" role="tab" data-toggle="tab">Admin</a></li>');
 			$('#nav').append('<li id = "europeTab"><a href="#europeTab" role="tab" data-toggle="tab">Europe Tab</a></li>');
@@ -77,7 +86,7 @@ var renderBody = function(data){
 			$('header .logInArea').hide();
 			$('header .logOutArea').show();
 			$('body #nav').show();
-			
+			$('#tabs').show();
 			
 			$('#nav').append('<li class = "active" id = "europeTab"><a href="#europeTab" role="tab" data-toggle="tab">Europe Tab</a></li>');
 			$('#nav').append('<li id = "nAmericaTab"><a href="#nAmericaTab" role="tab" data-toggle="tab">North America Tab</a></li>');
