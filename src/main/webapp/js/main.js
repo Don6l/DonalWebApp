@@ -26,7 +26,7 @@ var logOut = function(){
 	
 	$('#adminTab').attr('class','tab-pane');
 	$('#europeTab').attr('class','tab-pane');
-	
+	$('.tab-content').hide();
 	
 }
 
@@ -69,13 +69,14 @@ var renderBody = function(data){
 			$('header .logInArea').hide();
 			$('header .logOutArea').show();
 			$('body #nav').show();
-		
-			
+			$('.tab-content').show();
+
+			console.log("Show tab-content");
 			$('#nav').append('<li class ="active" id = "adminTab"><a href="#admin" role="tab" data-toggle="tab">Admin</a></li>');
 			$('#nav').append('<li id = "europeTab"><a href="#europe" role="tab" data-toggle="tab">Europe</a></li>');
-			$('#nav').append('<li id = "europeTab"><a href="#nAmerica" role="tab" data-toggle="tab">North America</a></li>');
-			$('#nav').append('<li id = "europeTab"><a href="#sAmerica" role="tab" data-toggle="tab">South America</a></li>');
-			$('#nav').append('<li id = "europeTab"><a href="#asia" role="tab" data-toggle="tab">Asia</a></li>');
+			$('#nav').append('<li id = "nAmericaTab"><a href="#nAmerica" role="tab" data-toggle="tab">North America</a></li>');
+			$('#nav').append('<li id = "sAmericaTab"><a href="#sAmerica" role="tab" data-toggle="tab">South America</a></li>');
+			$('#nav').append('<li id = "asiaTab"><a href="#asia" role="tab" data-toggle="tab">Asia</a></li>');
 			$('#admin').attr('class','tab-pane active');
 		}
 		else if(data[0]== "user"){
@@ -83,10 +84,14 @@ var renderBody = function(data){
 			$('header .logInArea').hide();
 			$('header .logOutArea').show();
 			$('body #nav').show();
+			$('.tab-content').show();
 			
-			
-			$('#nav').append('<li class = "active" id = "europeTab"><a href="#europeTab" role="tab" data-toggle="tab">Europe Tab</a></li>');
-			$('#europeTab').attr('class','tab-pane active');
+			console.log("Show tab-content");
+			$('#nav').append('<li class = "active" id = "europeTab"><a href="#europe" role="tab" data-toggle="tab">Europe</a></li>');
+			$('#nav').append('<li id = "nAmericaTab"><a href="#nAmerica" role="tab" data-toggle="tab">North America</a></li>');
+			$('#nav').append('<li id = "sAmericaTab"><a href="#sAmerica" role="tab" data-toggle="tab">South America</a></li>');
+			$('#nav').append('<li id = "asiaTab"><a href="#asia" role="tab" data-toggle="tab">Asia</a></li>');
+			$('#europe').attr('class','tab-pane active');
 		}
 		else if(data[0]== "invalid"){
 			alert("User name did not match password. Please try again")
