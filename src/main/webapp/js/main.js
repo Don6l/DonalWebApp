@@ -117,7 +117,14 @@ var showUsers = function(){
 };
 
 var renderShowUsers = function(data){
+	$('#viewUsersDiv').empty();
+	$('#viewUsersDiv').append('<div class="tab-pane" id="usersList"><table id ="usersTable><thead id "userHeader">'+
+			'<tr><th>Users ID</th><th>User Type</th></tr></thead><tbody id = "tableBody"></tbody></table></div>');
 	
+	var list = data == null ? [] : (data instanceof Array ? data : [data]);
+	$.each(list, function(index, user){
+		$('#tableBody').append('<tr><td id = "userRow">'+user[0]+'</td><td id = "userRow"'+user[2]+'</td></tr>');
+	});
 };
 
 var addUserToDataBase = function (){
