@@ -40,7 +40,20 @@
 			<div class = "tab-pane" id = "admin">
 				<div id = "form" class = "order">
 				<input type="file" name="file" id="file" class="form-control" />
-				<button type="button" id="submitButton" data-loading-text="Loading..." class="btn btn-primary">Upload File</button>
+				<button type="button" id="submitButton" data-loading-text="Loading..." class="btn btn-primary">Upload File</button>	
+				<br />
+				<br />
+				<h4><a href="#" class="slide1">Add New User</a></h4>
+					<div id="addNewUserID" class="hideOnLoad">
+						<input type="text" name="NewUserId" id="NewUserId"
+							placeholder="User Id"><br /> <input type="password"
+							name="NewPassword" id="NewPassword" placeholder="Password"><br />
+						<select id=NewUserType>
+							<option value="admin" id="admin">Administrator</option>
+							<option value="user" id="user">User</option>
+						</select> <br />
+						<button type="button" id="addNewUser" class="btn btn-primary">Add New User</button>
+					</div>
 				</div>
 			</div>
 	

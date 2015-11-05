@@ -27,8 +27,10 @@ var logOut = function(){
 	$('#adminTab').attr('class','tab-pane');
 	$('#europeTab').attr('class','tab-pane');
 	$('.tab-content').hide();
+	document.getElementById('NewUserId').value= '';
+	document.getElementById('NewPassword').value= '';
 	
-}
+};
 
 var authenticateLogin = function(){
 	console.log('athenticateLogin');
@@ -60,7 +62,6 @@ var authenticateLogin = function(){
 var renderBody = function(data){
 	console.log('renderBody');
 	
-	
 	document.getElementById('UserId').value = '';
 	document.getElementById('Password').value = '';
 	
@@ -70,7 +71,7 @@ var renderBody = function(data){
 			$('header .logOutArea').show();
 			$('body #nav').show();
 			$('.tab-content').show();
-
+			$(document).on("click", '#addNewUser', function(){addUserToDataBase();return false;});
 			console.log("Show tab-content");
 			$('#nav').append('<li class ="active" id = "adminTab"><a href="#admin" role="tab" data-toggle="tab">Admin</a></li>');
 			$('#nav').append('<li id = "europeTab"><a href="#europe" role="tab" data-toggle="tab">Europe</a></li>');
@@ -96,4 +97,43 @@ var renderBody = function(data){
 		else if(data[0]== "invalid"){
 			alert("User name did not match password. Please try again")
 		}
+};
+
+var formToJSON = function(){
+	return JSON.stringify({
+		"id": $('#NewUserId').val,
+		"Password":$('#NewPassword').val()
+	});
+};
+
+
+
+var addUserToDataBase = function (){
+	console.log('addUserToDataBase');
+	var NewUserId = document.getElementById('NewUserId').value;
+	var NewPassword = document.getElementById('NewPassword').value;
+	var NewUserType = document.getElementById('NewUserType').value;
+	
+	if(NewUserId != '' && document.getElementById('NewPassword').value != ''){
+		$.ajax({
+			type: 'POST',
+			contentType: 'application/json',
+			url: "http://localhost:8080/DonalWebApp/rest/Users/check/"+ NewUserId+'&'+NewPassword+'&'+NewUserType,
+			dataType: "json",
+			success: function(data, textStatus, jqXHR){
+				
+				alert('User created successfully');
+				document.getElementById('NewUserId').value= '';
+				document.getElementById('NewPassword').value= '';
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				alert('addNewUser errro: UserId :' + NewUserId+ ' already is user');
+				document.getElementById('NewUserId').value= '';
+			}
+		});
+	}
+	else{
+		alert("You must enter a value in for User Id AND password");
+	}
 };

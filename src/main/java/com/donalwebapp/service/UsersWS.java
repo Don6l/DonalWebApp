@@ -52,7 +52,7 @@ public class UsersWS {
 	
 	@POST
 	@Path("/check/{id}&{pw}&{type}")
-	@Produces({ MediaType.APPLICATION_JSON})
+	@Produces	({ MediaType.APPLICATION_JSON})
 	public Response checkNewUser(@PathParam("id") final String userId,@PathParam("pw") final String password, @PathParam("type") final String type){
 		final Users newUser = new Users();
 		newUser.setId(userId);
