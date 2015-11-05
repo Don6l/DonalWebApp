@@ -1,6 +1,8 @@
 package com.donalwebapp.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -48,7 +50,19 @@ public class UsersWS {
 		
 		return Response.status(200).entity(userType).build();
 	}
-	
+
+	@GET
+	@Path("/viewAll")
+	@Produces({ MediaType.APPLICATION_JSON})
+	public Response viewAllUsers(){
+		final List<Users> users = adminDAO.getAllUsers();
+		final Map<String, String> userMap = new HashMap<String, String>();
+		for(final Users user : users){
+			userMap.put(user.getId(), user.getUserType());
+		}
+		
+		return Response.status(200).entity(userMap).build();
+	}
 	
 	@POST
 	@Path("/check/{id}&{pw}&{type}")

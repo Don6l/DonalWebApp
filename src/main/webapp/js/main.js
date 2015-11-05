@@ -106,7 +106,19 @@ var formToJSON = function(){
 	});
 };
 
+var showUsers = function(){
+	console.log('showUsers');
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:8080/DonalWebApp/rest/Users/viewAll',
+		dataType: "json",
+		success: renderShowUsers
+	});
+};
 
+var renderShowUsers = function(data){
+	
+};
 
 var addUserToDataBase = function (){
 	console.log('addUserToDataBase');
