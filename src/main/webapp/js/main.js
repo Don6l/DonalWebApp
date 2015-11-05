@@ -3,8 +3,11 @@
  */
 
 $(document).ready(function(){
+	showUsers();
 	console.log('Begin');
 	hideEverything();
+	$('#submitButton').button('reset');
+	$(document).on("click", '#submitButton', function(){addDataSetToDataBase();return false;});
 	$(document).on("click", '#logInButton', function(){$('#logInButton').button('loading'); authenticateLogin();return false;});
 	$(document).on("click", '#logOutButton', function(){logOut();return false;});
 });
@@ -16,7 +19,7 @@ var hideEverything = function(){
 	$('header .logOutArea').hide();
 	$('#nav').empty();
 	$('#nav').hide();
-	
+
 };
 
 var logOut = function(){
@@ -24,8 +27,11 @@ var logOut = function(){
 	$('header .logInArea').show();
 	hideEverything();
 	
-	$('#adminTab').attr('class','tab-pane');
-	$('#europeTab').attr('class','tab-pane');
+	$('#admin').attr('class','tab-pane');
+	$('#europe').attr('class','tab-pane');
+	$('#nAmerica').attr('class','tab-pane');
+	$('#sAmerica').attr('class','tab-pane');
+	$('#asia').attr('class','tab-pane');
 	$('.tab-content').hide();
 	document.getElementById('NewUserId').value= '';
 	document.getElementById('NewPassword').value= '';
@@ -106,6 +112,48 @@ var formToJSON = function(){
 	});
 };
 
+
+
+var addDataSetToDataBase = function(){
+	console.log("addDataSetToDataBase");
+	$('#submitButton').button('loading');
+	if(!document.getElementById('file').value == ''){
+		
+		var data = new FormData();
+		jQuery.each(jQuery('#file')[0].files, function(i, file){
+			data.append('file', file);
+		});
+		$.ajax({
+			
+			type: 'POST',
+			data: data,
+			cache: false,
+			contentType: false,
+			url: "http://localhost:8080/DonalWebApp/upload/file/",
+			
+			success: function(textStatus){
+				$('#submitButton').button('reset');
+				alert(textStatus);
+			},
+			failure: function(textStatus){
+
+				$('#submitButton').button('reset');
+				alert(textStatus);
+			}
+		});
+	}
+	else{
+		$('#submitButton').button('reset');
+		alert("You must choose a file to load.");
+		
+	}
+	
+	$('#submitButton').button('reset');
+	document.getElementById('#file').value = '';
+};
+
+
+
 var showUsers = function(){
 	console.log('showUsers');
 	$.ajax({
@@ -117,14 +165,20 @@ var showUsers = function(){
 };
 
 var renderShowUsers = function(data){
-	$('#viewUsersDiv').empty();
-	$('#viewUsersDiv').append('<div class="tab-pane" id="usersList"><table id ="usersTable><thead id "userHeader">'+
-			'<tr><th>Users ID</th><th>User Type</th></tr></thead><tbody id = "tableBody"></tbody></table></div>');
+	console.log('renderShowUsers');
 	
-	var list = data == null ? [] : (data instanceof Array ? data : [data]);
-	$.each(list, function(index, user){
-		$('#tableBody').append('<tr><td id = "userRow">'+user[0]+'</td><td id = "userRow"'+user[2]+'</td></tr>');
-	});
+	$('#viewUsersDiv').empty();
+	$('#viewUsersDiv').append('<br />');
+	
+
+	for (var user in data){
+
+		$('#viewUsersDiv').append('<p><label class = "col-sm-4 control-label"><strong>User Id:</strong></label><input type="text" name="userName" id ="userName" value="'+user+'" disabled/></p>'+
+				'<p><label class = "col-sm-4 control-label"><strong>User Type:</strong></label><input type="text" name="userTypeName" id ="userTypeName" value="'+data[user]+'" disabled /></p> '+
+				'<p><button type="button" id="'+user+'" class="btn btn-primary">Delete</button><button type="button" id="update'+user+'" class="btn btn-primary">Update</button></p>');
+		
+	}
+	
 };
 
 var addUserToDataBase = function (){
@@ -151,6 +205,7 @@ var addUserToDataBase = function (){
 				document.getElementById('NewUserId').value= '';
 			}
 		});
+		showUsers();
 	}
 	else{
 		alert("You must enter a value in for User Id AND password");
