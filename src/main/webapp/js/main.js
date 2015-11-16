@@ -116,11 +116,11 @@ var formToJSON = function(){
 
 var addDataSetToDataBase = function(){
 	console.log("addDataSetToDataBase");
-	$('#submitButton').button('loading');
-	if(!document.getElementById('file').value == ''){
+	//$('#submitButton').button('loading');
+	if(document.getElementById('file').value != ''){
 		
 		var data = new FormData();
-		jQuery.each(jQuery('#file')[0].files, function(i, file){
+		$.each($('#file')[0].files, function(i, file){
 			data.append('file', file);
 		});
 		$.ajax({
@@ -129,7 +129,8 @@ var addDataSetToDataBase = function(){
 			data: data,
 			cache: false,
 			contentType: false,
-			url: "http://localhost:8080/DonalWebApp/upload/file/",
+			processData: false,
+			url: "http://localhost:8080/DonalWebApp/rest/upload/file",
 			
 			success: function(textStatus){
 				$('#submitButton').button('reset');
@@ -149,7 +150,7 @@ var addDataSetToDataBase = function(){
 	}
 	
 	$('#submitButton').button('reset');
-	document.getElementById('#file').value = '';
+	$('#file').empty();
 };
 
 
