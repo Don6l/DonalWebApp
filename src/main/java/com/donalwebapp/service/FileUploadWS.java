@@ -30,23 +30,22 @@ public class FileUploadWS {
 	@Consumes("multipart/form-data")
 	public Response uploadData(final MultipartFormDataInput input) {
 		System.out.println("HERE I AM AAAAAA VVVVVV: ");
-		 String fileName = "";
-    	 final Map<String, List<InputPart>> formParts = input.getFormDataMap();
-    	 final List<InputPart> inPart = formParts.get("file");
-                for (final InputPart inputPart : inPart) {
-                     final MultivaluedMap<String, String> headers = inputPart.getHeaders();
-                     fileName = parseFileName(headers);
-                     if(fileName.endsWith(".xlsx")||fileName.endsWith(".xls")){    
-                    	 fileName = "../"+fileName;
-                    	 //loadToDb.mapObjectsToDatabase(input, fileName, false);
-                    	 return Response.status(200).entity("File saved to server location : " + fileName).build();
-                     }
-		
-                }
-		
-		
-		
-		
+		String fileName = "";
+    	final Map<String, List<InputPart>> formParts = input.getFormDataMap();
+    	final List<InputPart> inPart = formParts.get("file");
+		for (final InputPart inputPart : inPart) {
+			final MultivaluedMap<String, String> headers = inputPart
+					.getHeaders();
+			fileName = parseFileName(headers);
+			if (fileName.endsWith(".xlsx") || fileName.endsWith(".xls")) {
+				fileName = "../" + fileName;
+				// loadToDb.mapObjectsToDatabase(input, fileName, false);
+				return Response.status(200)
+						.entity("File saved to server location : " + fileName)
+						.build();
+			}
+
+		}
 		/**
 		final InputPart inputPart = input.getFormDataMap().get("file").get(0);
 		final MultivaluedMap<String, String> fileData = inputPart.getHeaders();

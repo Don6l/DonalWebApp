@@ -48,7 +48,8 @@ public class PersistentObjectCreator {
 //	public static WorldWideWebData createWwwDataPersistObjects(final List<Object> list) throws ParseException{
 //		WorldWideWebData wwwData = null;
 //		wwwData = new WorldWideWebData();
-//		wwwData.setTest_id(Integer.parseInt(map.get("test_id")));
+//		wwwData.setTest_id(list.get(0));
+//		wwwData.setTest_id(Integer.parseInt(list.("test_id")));
 //		//wwwData.setTest_date());
 //		wwwData.setClient_ip_id(Integer.parseInt(map.get("client_ip_id")));
 //		wwwData.setDownload_kbps(Integer.parseInt("download_kbps"));
