@@ -38,11 +38,11 @@ public class FileUploadWS {
                      fileName = parseFileName(headers);
                      if(fileName.endsWith(".xlsx")||fileName.endsWith(".xls")){    
                     	 fileName = "../"+fileName;
-                    	 loadToDb.mapObjectsToDatabase(input, fileName, false);
+                    	 //loadToDb.mapObjectsToDatabase(input, fileName, false);
                     	 return Response.status(200).entity("File saved to server location : " + fileName).build();
                      }
 		
-		
+                }
 		
 		
 		
