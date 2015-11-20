@@ -62,8 +62,15 @@ public class ReadExcelData {
 	
 	private Map<String, String> readSheetInfo(Sheet sheet){
 		
+		List<WorldWideWebData> listOfWWWDataObjects = new ArrayList<WorldWideWebData>();
 		Map<String, String> infoMap = new HashMap<String, String>();
-		
+		String[] headers = {"test_id","test_date","client_ip_id",
+				"download_kbps","upload_kbps","latency","server_name","server_country","server_country_code",
+				"server_latitude","server_longitude","server_sponsor_name","user_agent",
+				"isp_name","client_net_speed","is_isp","client_country",
+				"client_country_code","client_region_name","client_region_code","client_city",
+				"client_latitude","client_longitude","miles_between"};
+				
 		final Iterator<Row> iteratorRow = sheet.rowIterator();
 		while(iteratorRow.hasNext()) {
 			Row row = iteratorRow.next();
@@ -71,10 +78,10 @@ public class ReadExcelData {
 			while(iteratorCell.hasNext()) {
 				final Cell cell = iteratorCell.next();
 				final String cellValue = cell.getStringCellValue();
-//				infoMap.add();
+				
 			}
 		}
-		return null;
+		return infoMap;
 	}
 	
 	
@@ -92,11 +99,16 @@ public class ReadExcelData {
 	} 
 }
 
+
+
+
+
+
+
+/*
 enum CellType {
 	TEST_ID("test_id"),
 	TEST_DATE("test_date");
-	
-	
 	
 	
 	private String name;
@@ -127,3 +139,4 @@ enum CellType {
 		throw new IllegalArgumentException("No CellType found for given index: "+index);
 	}
 }
+*/
