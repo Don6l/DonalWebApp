@@ -17,8 +17,7 @@ public class WorldWideWebData implements Serializable{
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int test_id;	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date test_date;	
+	private String test_date;	
 	private int client_ip_id;
 	private int download_kbps;
 	private int upload_kbps;
@@ -54,10 +53,10 @@ public class WorldWideWebData implements Serializable{
 	public void setTest_id(int test_id) {
 		this.test_id = test_id;
 	}
-	public Date getTest_date() {
+	public String getTest_date() {
 		return test_date;
 	}
-	public void setTest_date(Date test_date) {
+	public void setTest_date(String test_date) {
 		this.test_date = test_date;
 	}
 	public int getClient_ip_id() {

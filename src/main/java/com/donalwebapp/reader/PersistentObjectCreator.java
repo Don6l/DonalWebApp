@@ -16,7 +16,7 @@ public class PersistentObjectCreator {
 		WorldWideWebData wwwData = null;
 		wwwData = new WorldWideWebData();
 		wwwData.setTest_id(Integer.parseInt(map.get("test_id")));
-		//wwwData.setTest_date());
+		wwwData.setTest_date(map.get("test_date"));
 		wwwData.setClient_ip_id(Integer.parseInt(map.get("client_ip_id")));
 		wwwData.setDownload_kbps(Integer.parseInt("download_kbps"));
 		wwwData.setUpload_kbps(Integer.parseInt("upload_kbps"));

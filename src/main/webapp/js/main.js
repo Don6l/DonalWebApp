@@ -120,6 +120,9 @@ var addDataSetToDataBase = function(){
 	if(document.getElementById('file').value != ''){
 		
 		var data = new FormData();
+		var fileinfo = $('#file');
+		var f2 = $('#file')[0];
+		var f3 = $('#file')[0].files;
 		$.each($('#file')[0].files, function(i, file){
 			data.append('file', file);
 		});
@@ -130,7 +133,7 @@ var addDataSetToDataBase = function(){
 			cache: false,
 			contentType: false,
 			processData: false,
-			url: "http://localhost:8080/DonalWebApp/rest/upload/file",
+			url: "./rest/upload/file",
 			
 			success: function(textStatus){
 				$('#submitButton').button('reset');
@@ -159,7 +162,7 @@ var showUsers = function(){
 	console.log('showUsers');
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost:8080/DonalWebApp/rest/Users/viewAll',
+		url: './rest/Users/viewAll',
 		dataType: "json",
 		success: renderShowUsers
 	});
@@ -192,7 +195,7 @@ var addUserToDataBase = function (){
 		$.ajax({
 			type: 'POST',
 			contentType: 'application/json',
-			url: "http://localhost:8080/DonalWebApp/rest/Users/check/"+ NewUserId+'&'+NewPassword+'&'+NewUserType,
+			url: "./rest/Users/check/"+ NewUserId+'&'+NewPassword+'&'+NewUserType,
 			dataType: "json",
 			success: function(data, textStatus, jqXHR){
 				
