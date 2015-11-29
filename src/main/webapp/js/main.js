@@ -3,10 +3,25 @@
  */
 
 $(document).ready(function(){
-	showUsers();
+
 	console.log('Begin');
+	
 	hideEverything();
+	$('#userTable').DataTable();
 	$('#submitButton').button('reset');
+	$('#Password').keypress(function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == '13'){
+			authenticateLogin();
+		}
+	});
+	$('#UserId').keypress(function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == '13'){
+			authenticateLogin();
+		}
+	});
+	
 	$(document).on("click", '#submitButton', function(){addDataSetToDataBase();return false;});
 	$(document).on("click", '#logInButton', function(){$('#logInButton').button('loading'); authenticateLogin();return false;});
 	$(document).on("click", '#logOutButton', function(){logOut();return false;});
@@ -53,6 +68,7 @@ var authenticateLogin = function(){
 			success: renderBody
 		})
 		console.log('Welcome '+ UserId);
+		showUsers();
 	}
 	
 	else{
@@ -171,17 +187,26 @@ var showUsers = function(){
 var renderShowUsers = function(data){
 	console.log('renderShowUsers');
 	
-	$('#viewUsersDiv').empty();
-	$('#viewUsersDiv').append('<br />');
+	$('#userTable').empty();
+	$('#userTable').append('<thead><tr><th>User ID</th><th>User Type</th><th>Delete User</th><th>Edit User</th></tr></thead>'+
+	'<tbody></tbody>'+
+	'<tfoot><tr><th>User ID</th><th>User Type</th><th>Delete User</th><th>Edit User</th></tr></tfoot>');
 	
 
-	for (var user in data){
+for(var user in data){
+		$(userTable).append('<tr><td><input type="text" name="userName" id ="userName" value="'+user+'"/></td>'+
+				'<td><input type="text" name="userTypeName" id ="userTypeName" value="'+data[user]+'"/></td>'+
+				'<td><button type="button" id="'+user+'" class="btn btn-primary">Delete</button></td>'+
+				'<td><button type="button" id="update'+user+'" class="btn btn-primary">Update</button></td></tr>');
+	}	
+ /* 
+ * for (var user in data){
 
 		$('#viewUsersDiv').append('<p><label class = "col-sm-4 control-label"><strong>User Id:</strong></label><input type="text" name="userName" id ="userName" value="'+user+'" disabled/></p>'+
 				'<p><label class = "col-sm-4 control-label"><strong>User Type:</strong></label><input type="text" name="userTypeName" id ="userTypeName" value="'+data[user]+'" disabled /></p> '+
 				'<p><button type="button" id="'+user+'" class="btn btn-primary">Delete</button><button type="button" id="update'+user+'" class="btn btn-primary">Update</button></p>');
 		
-	}
+	}*/
 	
 };
 
@@ -198,7 +223,8 @@ var addUserToDataBase = function (){
 			url: "./rest/Users/check/"+ NewUserId+'&'+NewPassword+'&'+NewUserType,
 			dataType: "json",
 			success: function(data, textStatus, jqXHR){
-				
+				document.getElementById('#userTable')
+				showUsers();
 				alert('User created successfully');
 				document.getElementById('NewUserId').value= '';
 				document.getElementById('NewPassword').value= '';
@@ -209,7 +235,7 @@ var addUserToDataBase = function (){
 				document.getElementById('NewUserId').value= '';
 			}
 		});
-		showUsers();
+		
 	}
 	else{
 		alert("You must enter a value in for User Id AND password");
