@@ -25,6 +25,7 @@ $(document).ready(function(){
 	$(document).on("click", '#submitButton', function(){addDataSetToDataBase();return false;});
 	$(document).on("click", '#logInButton', function(){$('#logInButton').button('loading'); authenticateLogin();return false;});
 	$(document).on("click", '#logOutButton', function(){logOut();return false;});
+
 });
 
 
@@ -184,6 +185,20 @@ var showUsers = function(){
 	});
 };
 
+var table = function(data){
+	
+	var count = 1;
+	for(var user in data){
+			
+			$(userTable).append('<tr><td><input type="text" name="userName" id ="userName'+count+'" value="'+user+'"/></td>'+
+					'<td><input type="text" name="userTypeName" id ="userTypeName" value="'+data[user]+'"/></td>'+
+					'<td><button type="button" id="'+user+'" class="btn btn-primary">Delete</button></td>'+
+					'<td><button type="button" id="update'+user+'" class="btn btn-primary">Update</button></td></tr>');
+		}	
+
+	
+};
+
 var renderShowUsers = function(data){
 	console.log('renderShowUsers');
 	
@@ -192,22 +207,34 @@ var renderShowUsers = function(data){
 	'<tbody></tbody>'+
 	'<tfoot><tr><th>User ID</th><th>User Type</th><th>Delete User</th><th>Edit User</th></tr></tfoot>');
 	
+	table(data);
+var buttons = document.getElementsByTagName("button");
+var buttonsCount = buttons.length;
+for (var i = 0; i <= buttonsCount; i += 1) {
+    buttons[i].onclick = function(e) {
+        var id = this.id;
+        
+    	if(id.indexOf(0,5)=='update'){
+    		var stuff = id.indexOf(0,5);
 
-for(var user in data){
-		$(userTable).append('<tr><td><input type="text" name="userName" id ="userName" value="'+user+'"/></td>'+
-				'<td><input type="text" name="userTypeName" id ="userTypeName" value="'+data[user]+'"/></td>'+
-				'<td><button type="button" id="'+user+'" class="btn btn-primary">Delete</button></td>'+
-				'<td><button type="button" id="update'+user+'" class="btn btn-primary">Update</button></td></tr>');
-	}	
- /* 
- * for (var user in data){
-
-		$('#viewUsersDiv').append('<p><label class = "col-sm-4 control-label"><strong>User Id:</strong></label><input type="text" name="userName" id ="userName" value="'+user+'" disabled/></p>'+
-				'<p><label class = "col-sm-4 control-label"><strong>User Type:</strong></label><input type="text" name="userTypeName" id ="userTypeName" value="'+data[user]+'" disabled /></p> '+
-				'<p><button type="button" id="'+user+'" class="btn btn-primary">Delete</button><button type="button" id="update'+user+'" class="btn btn-primary">Update</button></p>');
-		
-	}*/
-	
+    		alert(stuff);
+    	}else{
+    		alert(id);
+    		$.ajax({
+    			type: 'DELETE',
+    			contentType: 'application/json',
+    			url: "./rest/Users/remove/"+id,
+    			dataType: 'json',
+    			success: function(data, textStatus, jqXHR){
+    				alert();
+    				showUsers();
+    			}
+    		
+    		});
+    	}
+        
+    };
+}	
 };
 
 var addUserToDataBase = function (){

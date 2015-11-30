@@ -10,4 +10,5 @@ import com.donalwebapp.entities.Users;
 public interface AdminDAO {
 	<T> void addRowToDatabase(T entity);
 	List<Users> getAllUsers();
+	void removeUser(String user);
 }

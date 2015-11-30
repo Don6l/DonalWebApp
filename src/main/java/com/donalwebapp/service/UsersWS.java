@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -63,6 +64,17 @@ public class UsersWS {
 		
 		return Response.status(200).entity(userMap).build();
 	}
+	
+	
+	@DELETE
+	@Path("/remove/{id}")
+	public Response removeUser(@PathParam("id")final String userId){
+		adminDAO.removeUser(userId);
+		
+		return Response.status(200).build();
+	}
+	
+	
 	
 	@POST
 	@Path("/check/{id}&{pw}&{type}")

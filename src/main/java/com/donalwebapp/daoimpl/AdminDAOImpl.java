@@ -42,4 +42,10 @@ public class AdminDAOImpl implements AdminDAO {
 		return query.getResultList();
 	
 	}
+	
+	public void removeUser(String user){
+		final Query query = entityManager.createQuery("DROP u * FROM Users u WHERE id = '"+user+"'");
+	}
+
+
 }
