@@ -213,13 +213,11 @@ var buttonsCount = buttons.length;
 for (var i = 0; i <= buttonsCount; i += 1) {
     buttons[i].onclick = function(e) {
         var id = this.id;
-        
-    	if(id.indexOf(0,5)=='update'){
-    		var stuff = id.indexOf(0,5);
-
-    		alert(stuff);
+        console.log(id);
+    	if((id.substring(0,5)).localeCompare('update')){
+    		var stuff = id.substring(0,5);
+    		console.log(stuff);
     	}else{
-    		alert(id);
     		$.ajax({
     			type: 'DELETE',
     			contentType: 'application/json',
@@ -227,7 +225,7 @@ for (var i = 0; i <= buttonsCount; i += 1) {
     			dataType: 'json',
     			success: function(data, textStatus, jqXHR){
     				alert();
-    				showUsers();
+    				
     			}
     		
     		});
