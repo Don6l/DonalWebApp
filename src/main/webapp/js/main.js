@@ -225,7 +225,6 @@ for (var i = 0; i <= buttonsCount; i += 1) {
     			dataType: 'json',
     			success: function(data, textStatus, jqXHR){
     				alert();
-    				
     			}
     		
     		});
