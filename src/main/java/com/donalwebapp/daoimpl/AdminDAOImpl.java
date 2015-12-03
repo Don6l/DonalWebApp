@@ -44,8 +44,13 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	}
 	
+	public Users getUserById(String id){
+		return entityManager.find(Users.class,id);
+	}
+	
 	public void removeUser(String user){
-		final Query query = entityManager.createQuery("DROP u FROM Users u WHERE id = '"+user+"'");
+		entityManager.remove(getUserById(user));
+		System.out.println(user);
 	}
 
 

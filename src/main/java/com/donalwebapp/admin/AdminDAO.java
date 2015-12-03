@@ -11,4 +11,5 @@ public interface AdminDAO {
 	<T> void addRowToDatabase(T entity);
 	List<Users> getAllUsers();
 	void removeUser(String user);
+	Users getUserById(String id);
 }

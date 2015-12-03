@@ -68,10 +68,10 @@ public class UsersWS {
 	
 	@DELETE
 	@Path("/remove/{id}")
-	public Response removeUser(@PathParam("id")final String userId){
+	@Produces({ MediaType.APPLICATION_JSON})
+	public void removeUser(@PathParam("id")final String userId){
 		adminDAO.removeUser(userId);
 		
-		return Response.status(200).build();
 	}
 	
 	
